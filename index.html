@@ -15,23 +15,27 @@ tr:last-child td{border-bottom:none}
 .dn{color:#069;font-weight:600}
 .empty{padding:40px;text-align:center;color:#9aa2b4}
 </style></head><body>
-<div class="hd"><h1>选股测试 · 7+9条件</h1><span class="st">2026-10-15 09:42 · 全A 5225 · 初筛1159 · 外盘>内盘734 · 命中7+9条件 0  · 29s</span></div>
+<div class="hd"><h1>选股测试 · 7+9条件</h1><span class="st">2026-10-15 09:45 · 全A 5225 · 初筛703 · 外盘>内盘459 · 命中7+9条件 1  · 28s · 现在时间 <b id="rt">--:--:--</b></span></div>
 <div class="box">
 <table>
 <thead><tr><th>时间</th><th>代码</th><th>名称</th><th>量比(当日/昨日)</th><th>涨幅</th><th>分时均线</th><th>日线趋势</th></tr></thead>
-<tbody></tbody>
+<tbody><tr><td>09:46</td><td>603919</td><td>金徽酒</td><td>0.29</td><td class='up'>+3.68%</td><td class='up'>上方</td><td>空头</td></tr></tbody>
 </table>
 <div class="empty" style="display:none">暂无数据</div>
 </div>
 <div class='box sec'><h2>封板统计 · 入池后涨停 <span class='n'>0 只</span></h2><table><thead><tr><th>入池时间</th><th>代码</th><th>名称</th><th>入池量比</th><th>封板时间</th><th>封板时量比</th></tr></thead><tbody></tbody></table></div>
 <div style="padding:10px 16px;font-size:12px;color:#9aa2b4">
-本页每 30 秒自动刷新(带时间戳绕缓存) · 每交易日 09:00 清空重来 · 盘中每分钟自动更新<br>
+本页每 10 秒自动刷新(带时间戳绕缓存) · 每交易日 09:00 清空重来 · 盘中每分钟自动更新<br>
 股池选择=第7(1分钟量创9:46以来新高&&创当日新高) 且 第9(15分/30分双MACD最近刚金叉)；<br>
 时间=第7条件(1分钟量创9:46以来新高 && 创当日新高)命中分钟；量比=当日累计量/昨日全天量；
 分时均线=当前价 vs 当日VWAP(量加权均价)；日线趋势=最新收盘 vs MA20。数据来自免费源(0AI点)。
 </div>
 <script>
-// 每30秒自动刷新：带时间戳参数绕过浏览器/CDN缓存(max-age=600)，确保拿到最新构建版本
-setTimeout(function(){ location.replace((location.pathname.split('/').pop()||'') + '?t=' + Date.now()); }, 30000);
+// 实时时钟(每秒)：直观对照 数据时间 vs 当前时间
+var _tick = function(){ var d = new Date(); var p = function(n){ return (n<10?'0':'')+n; }; var el = document.getElementById('rt'); if (el) el.textContent = p(d.getHours())+':'+p(d.getMinutes())+':'+p(d.getSeconds()); };
+setInterval(_tick, 1000); _tick();
+// 刷新策略：首次打开(无t参数)2秒后立即切带时间戳URL绕CDN旧缓存；之后每10秒刷新拿最新构建版
+var _go = function(){ location.replace((location.pathname.split('/').pop()||'') + '?t=' + Date.now()); };
+if (/[?&]t=/.test(location.search)) { setTimeout(_go, 10000); } else { setTimeout(_go, 2000); }
 </script>
 </body></html>
